@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "closed_loop_controller"
+version = "0.1.0"
+description = ""
+authors = ["Josh <josh.clayton@iceotope.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+PyYAML = "^6.0"
+SQLAlchemy = "^1.4.37"
+pandas = "^1.4.2"
+psycopg2 = "^2.9.3"
+requests = "^2.28.0"
+numpy = "^1.22.4"
+pathlib = "^1.0.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+closed_loop_controller = "closed_loop_controller:run"

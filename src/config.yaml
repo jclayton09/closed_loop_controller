@@ -1,0 +1,40 @@
+#input:
+#  data_format: Sql
+#  interval: 30s
+#  changing_variable: chiller2_litreperminute
+##  constant_variable: chiller1_litreperminute
+#  limit: 5
+#  database_connection: postgresql://telegraf:Yr;rhtsg@192.168.30.4/timescale
+#  table: josh_testing_1
+#output:
+#  output_format: http
+#  constant_variable_lower_limit: 2
+#  constant_variable_upper_limit: 10
+#  minimum_step: 0.5
+#  changing_url: 'http://127.0.0.1:8000/voltage/set/'
+#  current_url: 'http://127.0.0.1:8000/voltage/set'
+
+
+input:
+  data_format: exec
+  interval: 10s
+  changing_variable: c1c1_pump1_rpm
+#  constant_variable: c1c2_pump1_rpm
+  limit: 6000
+  commands: ["hmb2_testing", "metrics"]
+output:
+  output_format: exec
+  constant_variable_lower_limit: 0
+  constant_variable_upper_limit: 5
+  minimum_step: 0.01
+  current_value_command: ["hmb2_testing", "metrics"]
+  output_command: ["hmb2_testing", "pumps", "--speed"]
+  current_value: c1c1_pump1_speed_volt
+
+#output:
+#  output_format: http
+#  constant_variable_lower_limit: 2
+#  constant_variable_upper_limit: 10
+#  minimum_step: 0.5
+#  changing_url: 'http://127.0.0.1:8000/voltage/set/'
+#  current_url: 'http://127.0.0.1:8000/voltage/set'
